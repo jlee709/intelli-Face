@@ -1,6 +1,9 @@
 import React, { Component } from "react";
+
 import Nav from "./components/Nav/Nav";
 import Logo from "./components/Logo/Logo";
+import ImageForm from "./components/ImageForm/ImageForm";
+import FacialRec from "./components/FacialRec/FacialRec";
 import "./App.css";
 
 class App extends Component {
@@ -9,8 +12,8 @@ class App extends Component {
       <div className="App">
         <Nav />
         <Logo />
-        {/* <ImageForm />
-      <FacialRec /> */}
+        <ImageForm />
+        <FacialRec />
       </div>
     );
   }
