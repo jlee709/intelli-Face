@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Nav from "./components/Nav/Nav";
+import Logo from "./components/Logo/Logo";
 import "./App.css";
 
 class App extends Component {
@@ -7,9 +8,9 @@ class App extends Component {
     return (
       <div className="App">
         <Nav />
-        {/* {<Logo />
-      <ImageForm />
-      <FacialRec />} */}
+        <Logo />
+        {/* <ImageForm />
+      <FacialRec /> */}
       </div>
     );
   }
