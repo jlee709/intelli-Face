@@ -9,3 +9,7 @@ body {
     rgb(203, 158, 131) 75%
   );
 }
+
+button {
+  cursor: pointer;
+}
