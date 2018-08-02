@@ -1,9 +1,11 @@
 import React from "react";
 
-const FacialRec = () => {
+const FacialRec = ({ imageUrl }) => {
   return (
-    <div>
-      <p>placeHolding</p>
+    <div className="center ma">
+      <div className="absolute mt2">
+        <img alt="" src={imageUrl} width="500px" height="auto" />
+      </div>
     </div>
   );
 };
