@@ -6,7 +6,6 @@ import Logo from "./components/Logo/Logo";
 import ImageForm from "./components/ImageForm/ImageForm";
 import FacialRec from "./components/FacialRec/FacialRec";
 import CrowdRank from "./components/CrowdRank/CrowdRank";
-
 import "./App.css";
 
 // initialize Calrify
@@ -25,7 +24,6 @@ const particleOptions = {
     }
   }
 };
-console.log();
 
 class App extends Component {
   constructor() {
@@ -58,11 +56,13 @@ class App extends Component {
   };
 
   onInputChange = event => {
+    console.log("ON_INPUT_CHANGE");
     this.setState({ input: event.target.value });
   };
 
   onButtonSubmit = () => {
-    this.setState = { imageUrl: this.state.input };
+    console.log("ON_BTN_SUBMIT");
+    this.setState({ imageUrl: this.state.input });
 
     app.models
       .predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
@@ -76,6 +76,7 @@ class App extends Component {
   };
 
   render() {
+    const { box } = this.state;
     return (
       <div className="App">
         <Particles className="particles" params={particleOptions} />
@@ -86,11 +87,7 @@ class App extends Component {
           onInputChange={this.onInputChange}
           onButtonSubmit={this.onButtonSubmit}
         />
-        <FacialRec
-          className="box mt2"
-          box={this.state.box}
-          imageUrl={this.state.input}
-        />
+        <FacialRec className="box mt2" box={box} imageUrl={this.state.input} />
       </div>
     );
   }

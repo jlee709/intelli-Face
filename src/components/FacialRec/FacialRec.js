@@ -2,8 +2,7 @@ import React from "react";
 import "./FacialRec.css";
 
 const FacialRec = ({ imageUrl, box }) => {
-  console.log("SEXSEXSEX");
-  console.log("BOX INF FACIAL COMPONENT", box);
+  console.log("BOX_FACIAL_COMPONENT", box);
   return (
     <div className="center ma">
       <div className="absolute mt2">
