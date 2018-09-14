@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 const database = {
   users: [
     {
-      id: 23,
+      id: "23",
       name: "justin",
       password: "hello",
       email: "justin@jlee.com",
@@ -22,7 +22,7 @@ const database = {
       joined: new Date()
     },
     {
-      id: 24,
+      id: "24",
       name: "wayne",
       password: "karate",
       email: "wayne@jlee.com",
@@ -33,7 +33,7 @@ const database = {
 };
 
 app.get("/", (req, res) => {
-  res.send("we are operational");
+  res.send(database.users);
 });
 
 app.post("/signin", (req, res) => {
@@ -50,7 +50,7 @@ app.post("/signin", (req, res) => {
 app.post("/register", (req, res) => {
   const { name, email, password } = req.body;
   database.users.push({
-    id: 26,
+    id: "26",
     name: name,
     password: password,
     email: email,
@@ -58,6 +58,21 @@ app.post("/register", (req, res) => {
     joined: new Date()
   });
   res.json(database.users[database.users.length - 1]);
+});
+
+app.get("/profile/:id", (req, res) => {
+  const { id } = req.params;
+  let found = false;
+
+  database.users.forEach(user => {
+    if (user.id === id) {
+      found = true;
+      return res.json(user);
+    }
+  });
+  if (!found) {
+    res.status(400).json("not found");
+  }
 });
 
 app.listen(3000, () => {
