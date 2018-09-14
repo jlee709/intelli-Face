@@ -37,8 +37,6 @@ app.get("/", (req, res) => {
 });
 
 app.post("/signin", (req, res) => {
-  // console.log(req.body.email);
-  // console.log(database.users[0].password);
   if (
     req.body.password === database.users[0].password &&
     req.body.email === database.users[0].email
@@ -47,6 +45,19 @@ app.post("/signin", (req, res) => {
   } else {
     res.status(400).json("login error");
   }
+});
+
+app.post("/register", (req, res) => {
+  const { name, email, password } = req.body;
+  database.users.push({
+    id: 26,
+    name: name,
+    password: password,
+    email: email,
+    entries: 0,
+    joined: new Date()
+  });
+  res.json(database.users[database.users.length - 1]);
 });
 
 app.listen(3000, () => {
