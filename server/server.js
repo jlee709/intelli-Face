@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt-nodejs");
+const cors = require("cors");
 const app = express();
 
 app.use(
@@ -10,6 +11,8 @@ app.use(
 );
 
 app.use(bodyParser.json());
+
+app.use(cors());
 
 const database = {
   users: [
@@ -92,5 +95,5 @@ app.post("/image", (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log("servers up");
+  console.log("Server Operational~");
 });
