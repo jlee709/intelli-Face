@@ -33,7 +33,8 @@ class App extends Component {
     this.state = {
       input: "",
       imageUrl: "",
-      box: {}
+      box: {},
+      route: "signin"
     };
   }
 
@@ -84,24 +85,21 @@ class App extends Component {
   render() {
     const { box } = this.state;
     return (
-      <article>
-        <div className="App">
-          <Particles className="particles" params={particleOptions} />
-          <Nav />
-          <SignIn />
-          <Logo />
-          <CrowdRank />
-          <ImageForm
-            onInputChange={this.onInputChange}
-            onButtonSubmit={this.onButtonSubmit}
-          />
-          <FacialRec
-            className="box mt2"
-            box={box}
-            imageUrl={this.state.input}
-          />
-        </div>
-      </article>
+      <div className="App">
+        <Particles className="particles" params={particleOptions} />
+        <Nav />
+
+     { this.state.route === 'signin'
+      ? <SignIn />
+      : <Logo />
+        <CrowdRank />
+        <ImageForm
+          onInputChange={this.onInputChange}
+          onButtonSubmit={this.onButtonSubmit}
+        />
+        <FacialRec className="box mt2" box={box} imageUrl={this.state.input} />
+}
+      </div>
     );
   }
 }
