@@ -6,6 +6,7 @@ import Logo from "./components/Logo/Logo";
 import ImageForm from "./components/ImageForm/ImageForm";
 import FacialRec from "./components/FacialRec/FacialRec";
 import CrowdRank from "./components/CrowdRank/CrowdRank";
+import SignIn from "./components/SignIn/signIn";
 import "./App.css";
 
 // initialize Calrify
@@ -83,17 +84,24 @@ class App extends Component {
   render() {
     const { box } = this.state;
     return (
-      <div className="App">
-        <Particles className="particles" params={particleOptions} />
-        <Nav />
-        <Logo />
-        <CrowdRank />
-        <ImageForm
-          onInputChange={this.onInputChange}
-          onButtonSubmit={this.onButtonSubmit}
-        />
-        <FacialRec className="box mt2" box={box} imageUrl={this.state.input} />
-      </div>
+      <article>
+        <div className="App">
+          <Particles className="particles" params={particleOptions} />
+          <Nav />
+          <SignIn />
+          <Logo />
+          <CrowdRank />
+          <ImageForm
+            onInputChange={this.onInputChange}
+            onButtonSubmit={this.onButtonSubmit}
+          />
+          <FacialRec
+            className="box mt2"
+            box={box}
+            imageUrl={this.state.input}
+          />
+        </div>
+      </article>
     );
   }
 }
