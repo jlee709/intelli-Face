@@ -1,6 +1,7 @@
 import React from "react";
 
 const SignIn = () => {
+  console.log("Testing REnder");
   return (
     <article className="br4 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 center shadow-2">
       <main className="pa4 black-80">
