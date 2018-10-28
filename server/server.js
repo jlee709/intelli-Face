@@ -11,13 +11,12 @@ app.use(
 );
 
 app.use(bodyParser.json());
-
 app.use(cors());
 
 const database = {
   users: [
     {
-      id: "23",
+      id: "1",
       name: "justin",
       password: "hello",
       email: "justin@jlee.com",
@@ -25,7 +24,7 @@ const database = {
       joined: new Date()
     },
     {
-      id: "24",
+      id: "2",
       name: "wayne",
       password: "karate",
       email: "wayne@jlee.com",
