@@ -2,6 +2,27 @@ import React, { Component } from 'react'
 
 
 class SignIn extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      signInEmail: '',
+      password: ''
+    }
+  }
+
+  onEmailChange = (event) => {
+    this.setState({ signInEmail: event.target.value })
+  }
+
+  onPasswordChange = (event) => {
+    this.setState({ password: event.target.value })
+  }
+
+  onSubmitSignin = () => {
+    console.log(this.state)
+  }
+
   render() {
     const { onRouteChange } = this.props;
     return (
@@ -36,15 +57,17 @@ class SignIn extends Component {
             </fieldset>
             <div className="">
               <input
+                onClick={() => onRouteChange('home')}
                 className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
                 type="submit"
                 value="Sign in"
               />
             </div>
             <div className="lh-copy mt3">
-              <a href="#0" className="f6 link dim black db">
+              <p onClick={() => onRouteChange('register')}> <a href="#0" className="f6 link dim black db">
                 Register
-            </a>
+                  </a>
+              </p>
             </div>
           </form>
         </main>
