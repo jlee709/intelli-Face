@@ -1,32 +1,36 @@
-import React, { Component } from 'react'
-
+import React, { Component } from "react";
 
 class SignIn extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      signInEmail: '',
-      password: ''
-    }
+      signInEmail: "",
+      password: ""
+    };
   }
 
-  onEmailChange = (event) => {
-    this.setState({ signInEmail: event.target.value })
-  }
+  onEmailChange = event => {
+    this.setState({ signInEmail: event.target.value });
+  };
 
-  onPasswordChange = (event) => {
-    this.setState({ password: event.target.value })
-  }
+  onPasswordChange = event => {
+    this.setState({ password: event.target.value });
+  };
 
   onSubmitSignin = () => {
-    console.log(this.state)
-  }
+    console.log(this.state);
+  };
+
+  // onClick = () => {
+  //   this.setState({ this.state.})
+  // }
 
   render() {
     const { onRouteChange } = this.props;
+    console.log(this.props, "PROPS_PROS");
     return (
-      <article className="br4 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 center shadow-2" >
+      <article className="br4 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 center shadow-2">
         <main className="pa4 black-80">
           <form className="measure ">
             <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
@@ -34,7 +38,7 @@ class SignIn extends Component {
               <div className="mt3">
                 <label className="db fw6 lh-copy f6" for="email-address">
                   Email
-              </label>
+                </label>
                 <input
                   className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                   type="email"
@@ -45,7 +49,7 @@ class SignIn extends Component {
               <div className="mv3">
                 <label className="db fw6 lh-copy f6" for="password">
                   Password
-              </label>
+                </label>
                 <input
                   className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                   type="password"
@@ -57,26 +61,24 @@ class SignIn extends Component {
             </fieldset>
             <div className="">
               <input
-                onClick={() => onRouteChange('home')}
+                onClick={() => onRouteChange("home")}
                 className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
                 type="submit"
                 value="Sign in"
               />
             </div>
             <div className="lh-copy mt3">
-              <p onClick={() => onRouteChange('register')}> <a href="#0" className="f6 link dim black db">
-                Register
-                  </a>
+              <p onClick={() => onRouteChange("register")}>
+                <a href="#" className="f6 link dim black db">
+                  Register
+                </a>
               </p>
             </div>
           </form>
         </main>
       </article>
     );
-  };
+  }
 }
-
-
-
 
 export default SignIn;
