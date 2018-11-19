@@ -1,12 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 
-class SignIn extends Component {
+class Signin extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       signInEmail: "",
-      password: ""
+      signInPassword: ""
     };
   }
 
@@ -15,11 +14,7 @@ class SignIn extends Component {
   };
 
   onPasswordChange = event => {
-    this.setState({ password: event.target.value });
-  };
-
-  onSubmitSignin = () => {
-    console.log(this.state);
+    this.setState({ signInPassword: event.target.value });
   };
 
   onSubmitSignIn = () => {
@@ -42,15 +37,14 @@ class SignIn extends Component {
 
   render() {
     const { onRouteChange } = this.props;
-    console.log(this.props, "PROPS_PROS");
     return (
-      <article className="br4 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 center shadow-2">
+      <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
         <main className="pa4 black-80">
-          <form className="measure ">
+          <div className="measure">
             <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
               <legend className="f1 fw6 ph0 mh0">Sign In</legend>
               <div className="mt3">
-                <label className="db fw6 lh-copy f6" for="email-address">
+                <label className="db fw6 lh-copy f6" htmlFor="email-address">
                   Email
                 </label>
                 <input
@@ -58,10 +52,11 @@ class SignIn extends Component {
                   type="email"
                   name="email-address"
                   id="email-address"
+                  onChange={this.onEmailChange}
                 />
               </div>
               <div className="mv3">
-                <label className="db fw6 lh-copy f6" for="password">
+                <label className="db fw6 lh-copy f6" htmlFor="password">
                   Password
                 </label>
                 <input
@@ -69,31 +64,31 @@ class SignIn extends Component {
                   type="password"
                   name="password"
                   id="password"
+                  onChange={this.onPasswordChange}
                 />
               </div>
-              <label className="pa0 ma0 lh-copy f6 pointer" />
             </fieldset>
             <div className="">
               <input
-                onClick={() => onRouteChange("home")}
+                onClick={this.onSubmitSignIn}
                 className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
                 type="submit"
                 value="Sign in"
               />
             </div>
             <div className="lh-copy mt3">
-              <p onClick={() => onRouteChange("register")}>
-                <a href="#" className="f6 link dim black db">
-                  Register
-                </a>
+              <p
+                onClick={() => onRouteChange("register")}
+                className="f6 link dim black db pointer"
+              >
+                Register
               </p>
             </div>
-          </form>
+          </div>
         </main>
       </article>
     );
   }
 }
-// Test for git hub
 
-export default SignIn;
+export default Signin;
