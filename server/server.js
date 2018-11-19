@@ -34,65 +34,50 @@ const database = {
   ]
 };
 
-app.get("/", (req, res) => {
-  res.send(database.users);
-});
+app.use(cors());
+app.use(bodyParser.json());
+app.get("/", (req, res) => res.send("Hello World!"));
 
 app.post("/signin", (req, res) => {
+  var a = JSON.parse(req.body);
   if (
-    req.body.password === database.users[0].password &&
-    req.body.email === database.users[0].email
+    a.username === database.users[0].email &&
+    a.password === database.secrets.hash
   ) {
-    res.json("Succsess!!");
+    res.send("signed in");
   } else {
-    res.status(400).json("login error");
+    res.json("access denied");
   }
 });
 
+app.post("/findface", (req, res) => {
+  database.users.forEach(user => {
+    if (user.email === req.body.email) {
+      user.entries++;
+      res.json(user);
+    }
+  });
+  res.json("nope");
+});
+
 app.post("/register", (req, res) => {
-  const { name, email, password } = req.body;
   database.users.push({
-    id: "26",
-    name: name,
-    password: password,
-    email: email,
+    id: "124",
+    name: req.body.name,
+    email: req.body.email,
     entries: 0,
     joined: new Date()
   });
   res.json(database.users[database.users.length - 1]);
 });
 
-app.get("/profile/:id", (req, res) => {
-  const { id } = req.params;
-  let found = false;
-
+app.get("/profile/:userId", (req, res) => {
   database.users.forEach(user => {
-    if (user.id === id) {
-      found = true;
+    if (user.id === req.params.userId) {
       return res.json(user);
     }
   });
-  if (!found) {
-    res.status(400).json("not found");
-  }
+  // res.json('no user')
 });
 
-app.post("/image", (req, res) => {
-  const { id } = req.body;
-  let found = false;
-
-  database.users.forEach(user => {
-    if (user.id === id) {
-      found = true;
-      user.entries++;
-      return res.json(user.entries);
-    }
-  });
-  if (!found) {
-    res.status(400).json("not found");
-  }
-});
-
-app.listen(3000, () => {
-  console.log("Server Operational~");
-});
+app.listen(3000, () => console.log("Example app listening on port 3000!"));

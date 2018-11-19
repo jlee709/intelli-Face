@@ -83,10 +83,7 @@ class SignIn extends Component {
             </div>
             <div className="lh-copy mt3">
               <p onClick={() => onRouteChange("register")}>
-                <a
-                  href="http://localhost:3000/home"
-                  className="f6 link dim black db"
-                >
+                <a href="#" className="f6 link dim black db">
                   Register
                 </a>
               </p>
