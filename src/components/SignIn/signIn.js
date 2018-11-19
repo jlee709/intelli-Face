@@ -22,9 +22,23 @@ class SignIn extends Component {
     console.log(this.state);
   };
 
-  // onClick = () => {
-  //   this.setState({ this.state.})
-  // }
+  onSubmitSignIn = () => {
+    fetch("http://localhost:3000/signin", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: this.state.signInEmail,
+        password: this.state.signInPassword
+      })
+    })
+      .then(response => response.json())
+      .then(user => {
+        if (user.id) {
+          this.props.loadUser(user);
+          this.props.onRouteChange("home");
+        }
+      });
+  };
 
   render() {
     const { onRouteChange } = this.props;
@@ -69,7 +83,10 @@ class SignIn extends Component {
             </div>
             <div className="lh-copy mt3">
               <p onClick={() => onRouteChange("register")}>
-                <a href="#" className="f6 link dim black db">
+                <a
+                  href="http://localhost:3000/home"
+                  className="f6 link dim black db"
+                >
                   Register
                 </a>
               </p>
