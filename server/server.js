@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt-nodejs");
 const cors = require("cors");
 const app = express();
-// shelfed but will work later on be
+// shelfed but will work later
 app.use(
   bodyParser.urlencoded({
     extended: true
